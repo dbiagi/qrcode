@@ -8,6 +8,12 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores(['dist']),
+  stylistic.configs.customize({
+    indent: 2,
+    quotes: 'single',
+    semi: false,
+    jsx: true,
+  }),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -15,7 +21,6 @@ export default defineConfig([
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
-      stylistic.configs.customize({ indent: 2, quotes: 'single', semi: false, jsx: true }),
     ],
     languageOptions: {
       globals: globals.browser,
