@@ -1,6 +1,6 @@
-import styles from './App.module.css'
 import { useTranslation } from 'react-i18next'
-import LanguageSelector from './components/i18n/LanguageSelector'
+import { Container } from '@mantine/core'
+import { QRCodeGenerator } from './components/qrcode/QRCodeGenerator.tsx'
 
 function App() {
   const { t } = useTranslation()
@@ -8,11 +8,13 @@ function App() {
   return (
     <>
       <title>{t('title')}</title>
-      <LanguageSelector />
 
       <h1>{t('title')}</h1>
-      <div id="center" className={styles.panel}>
-        <p>Testo ie om roi </p>
+
+      <div id="center">
+        <Container>
+          <QRCodeGenerator />
+        </Container>
       </div>
     </>
   )

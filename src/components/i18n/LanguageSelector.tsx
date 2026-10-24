@@ -1,6 +1,6 @@
 import { SegmentedControl, Stack, Title } from '@mantine/core'
 import { useTranslation } from 'react-i18next'
-import { SUPPORTED_LANGUAGES } from '../../i18n'
+import { SUPPORTED_LANGUAGES } from '../../i18n/i18n'
 
 export default function LanguageSelector() {
   const { t, i18n } = useTranslation()
