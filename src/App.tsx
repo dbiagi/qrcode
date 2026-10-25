@@ -1,5 +1,6 @@
-import { useTranslation } from 'react-i18next'
 import { Container } from '@mantine/core'
+import { useTranslation } from 'react-i18next'
+
 import { QRCodeGenerator } from './components/qrcode/QRCodeGenerator.tsx'
 
 function App() {
@@ -11,11 +12,11 @@ function App() {
 
       <h1>{t('title')}</h1>
 
-      <div id="center">
+      <main id="center">
         <Container>
           <QRCodeGenerator />
         </Container>
-      </div>
+      </main>
     </>
   )
 }

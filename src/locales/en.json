@@ -4,5 +4,6 @@
   "language.en": "English",
   "language.pt": "Português",
   "qrcode_textarea_placeholder": "Enter text to generate QR code",
-  "qrcode_generate_qrcode": "Generate"
+  "qrcode_generate_qrcode": "Generate",
+  "qrcode_placeholder_img_alt": "QR code will appear here"
 }
