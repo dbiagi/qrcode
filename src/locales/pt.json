@@ -1,4 +1,5 @@
 {
   "title": "Gerador de QRCode",
-  "supported_languages": "Idiomas Suportados"
+  "supported_languages": "Idiomas Suportados",
+  "qrcode_textarea_placeholder": "Digite o texto para gerar o código QR"
 }
