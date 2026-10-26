@@ -18,6 +18,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "i18next": "^26.4.2",
     "i18next-browser-languagedetector": "^8.2.1",
+    "qr-code-styling": "^1.9.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-i18next": "^17.0.16"
