@@ -1,23 +1,23 @@
-import { Container } from '@mantine/core'
-import { useTranslation } from 'react-i18next'
+import './index.css'
+import './i18n/i18n.ts'
+import '@mantine/core/styles.css'
 
-import { QRCodeGenerator } from './components/qrcode/QRCodeGenerator.tsx'
+import { createTheme, MantineProvider } from '@mantine/core'
+import { StrictMode, Suspense } from 'react'
+
+import { Home } from '@/pages/Home.tsx'
+
+const theme = createTheme({})
 
 function App() {
-  const { t } = useTranslation()
-
   return (
-    <>
-      <title>{t('title')}</title>
-
-      <h1>{t('title')}</h1>
-
-      <main id="center">
-        <Container>
-          <QRCodeGenerator />
-        </Container>
-      </main>
-    </>
+    <StrictMode>
+      <MantineProvider defaultColorScheme="dark" theme={theme}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Home />
+        </Suspense>
+      </MantineProvider>
+    </StrictMode>
   )
 }
 
