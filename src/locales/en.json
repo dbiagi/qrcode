@@ -3,7 +3,14 @@
   "supported_languages": "Supported Languages",
   "language.en": "English",
   "language.pt": "Português",
-  "qrcode_textarea_placeholder": "Enter text to generate QR code",
+  "qrcode_form_textarea_description": "Enter the QR code text",
+  "qrcode_form_image_input_description": "Enter the QR code image",
+  "qrcode_form_link_input_description": "Enter the QR code link",
+  "qrcode_form_wifi_ssid_description": "Enter the WiFi network name (SSID)",
+  "qrcode_form_wifi_password_description": "Enter the WiFi network password",
+  "qrcode_form_wifi_encryption_description": "Select the WiFi network encryption type",
+  "qrcode_form_wifi_encryption_none": "None",
+  "qrcode_form_wifi_hidden_label": "Hidden network",
   "qrcode_generate_qrcode": "Generate",
   "qrcode_placeholder_img_alt": "QR code will appear here"
 }

@@ -2,6 +2,7 @@ import { Container } from '@mantine/core'
 import { useTranslation } from 'react-i18next'
 
 import { QRCodeGenerator } from '@/components/qrcode/QRCodeGenerator.tsx'
+
 export function Home() {
   const { t } = useTranslation()
 

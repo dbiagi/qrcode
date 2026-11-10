@@ -30,5 +30,8 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "node_modules/qr-code-styling/lib/types/index.d.ts"
+  ]
 }
