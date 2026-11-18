@@ -1,37 +1,28 @@
-import QRCodeStyling, {
-  type CornerDotType,
-  type CornerSquareType,
-  type DotType,
-  type DrawType,
-  type ErrorCorrectionLevel,
-  type Mode,
-  type Options,
-  type TypeNumber,
-} from 'qr-code-styling'
+import QRCodeStyling, { type Options } from 'qr-code-styling'
 import * as React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-type QRCodeStylingOptions = {
+export type QRCodeStylingOptions = {
+  target: React.RefObject<HTMLDivElement>
   width?: number
   height?: number
   data?: string
   backgroundColor?: string
-  target: React.Ref<HTMLDivElement>
   onDownloadClick?: (extension: string) => void
 }
 
 export function useStylingQRCode({ width, height, data, backgroundColor, target }: QRCodeStylingOptions) {
-  const options: Options = {
+  const options = useMemo<Options>(() => ({
     width,
     height,
     data,
-    type: 'svg' as DrawType,
-    image: '/favicon.ico',
+    type: 'svg',
+    // image: '',
     margin: 10,
     qrOptions: {
-      typeNumber: 0 as TypeNumber,
-      mode: 'Byte' as Mode,
-      errorCorrectionLevel: 'Q' as ErrorCorrectionLevel,
+      typeNumber: 0,
+      mode: 'Byte',
+      errorCorrectionLevel: 'Q',
     },
     imageOptions: {
       hideBackgroundDots: true,
@@ -41,28 +32,37 @@ export function useStylingQRCode({ width, height, data, backgroundColor, target 
     },
     dotsOptions: {
       color: '#222222',
-      type: 'rounded' as DotType,
+      type: 'square',
     },
     backgroundOptions: {
       color: backgroundColor || '#ffffff',
     },
     cornersSquareOptions: {
       color: '#222222',
-      type: 'extra-rounded' as CornerSquareType,
+      type: 'square',
     },
     cornersDotOptions: {
       color: '#222222',
-      type: 'dot' as CornerDotType,
+      type: 'square',
     },
-  }
+  }), [backgroundColor, data, height, width])
 
-  const qrCode = new QRCodeStyling(options)
+  const [qrCode] = useState(() => new QRCodeStyling(options))
 
   useEffect(() => {
-    if (target.current) {
-      qrCode.append(target.current)
+    const container = target.current
+    if (!container) {
+      return
     }
-  })
+    qrCode.append(container)
+    return () => {
+      container.replaceChildren()
+    }
+  }, [qrCode, target])
+
+  useEffect(() => {
+    qrCode.update(options)
+  }, [qrCode, options])
 
   return qrCode
 }
