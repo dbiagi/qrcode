@@ -8,14 +8,20 @@ export type QRCodeStylingOptions = {
   backgroundColor?: string
 }
 
+const DEFAULT_SIZE = 300
+const MARGIN_RATIO = 0.03
+const IMAGE_MARGIN_RATIO = 0.06
+
 function buildOptions({ width, height, data, backgroundColor }: QRCodeStylingOptions): Options {
+  const size = width ?? DEFAULT_SIZE
+
   return {
     width,
     height,
     data,
     type: 'svg',
     // image: '',
-    margin: 10,
+    margin: Math.round(size * MARGIN_RATIO),
     qrOptions: {
       typeNumber: 0,
       mode: 'Byte',
@@ -24,7 +30,7 @@ function buildOptions({ width, height, data, backgroundColor }: QRCodeStylingOpt
     imageOptions: {
       hideBackgroundDots: true,
       imageSize: 0.4,
-      margin: 20,
+      margin: Math.round(size * IMAGE_MARGIN_RATIO),
       crossOrigin: 'anonymous',
     },
     dotsOptions: {

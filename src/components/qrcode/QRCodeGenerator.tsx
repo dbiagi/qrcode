@@ -1,4 +1,4 @@
-import { Grid, Stack } from '@mantine/core'
+import { SimpleGrid, Stack } from '@mantine/core'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,8 +7,10 @@ import { QRCodeImage } from '@/components/qrcode/QRCodeImage.tsx'
 import { QRCodeTypeSelector } from '@/components/qrcode/QRCodeTypeSelector.tsx'
 import { useStylingQRCode } from '@/hooks/qrcode/useStylingQRCode'
 
-const WIDTH = 300
-const HEIGHT = 300
+import classes from './QRCodeGenerator.module.css'
+
+// Intrinsic resolution of the QR code (and of downloaded images). Display size is controlled by CSS.
+const QR_SIZE = 1024
 
 export function QRCodeGenerator() {
   const { t } = useTranslation()
@@ -21,8 +23,8 @@ export function QRCodeGenerator() {
   }
 
   const { ref: qrcodeContainer } = useStylingQRCode({
-    width: WIDTH,
-    height: HEIGHT,
+    width: QR_SIZE,
+    height: QR_SIZE,
     data,
   })
 
@@ -31,17 +33,15 @@ export function QRCodeGenerator() {
   }
 
   return (
-    <Grid align="center" grow>
-      <Grid.Col span={{ base: 12, md: 7 }}>
-        <Stack gap="md" align="center" justify="center">
-          <QRCodeTypeSelector onChange={onTypeChange} />
-          <QRCodeForm type={selectedType as QRCodeInputType} onSubmit={onSubmitHandler} />
-        </Stack>
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 5 }}>
+    <SimpleGrid minColWidth="min(100%, 18rem)" autoFlow="auto-fit" spacing="xl">
+      <Stack gap="md">
+        <QRCodeTypeSelector onChange={onTypeChange} />
+        <QRCodeForm type={selectedType as QRCodeInputType} onSubmit={onSubmitHandler} />
+      </Stack>
+      <div className={classes.preview}>
         <div ref={qrcodeContainer} hidden={isDataEmpty} />
-        <QRCodeImage alt={t('qrcode_placeholder_img_alt')} height={HEIGHT} width={WIDTH} hidden={!isDataEmpty} />
-      </Grid.Col>
-    </Grid>
+        <QRCodeImage alt={t('qrcode_placeholder_img_alt')} height={QR_SIZE} width={QR_SIZE} hidden={!isDataEmpty} />
+      </div>
+    </SimpleGrid>
   )
 }
