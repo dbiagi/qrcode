@@ -13,7 +13,7 @@ export function Home() {
       <h1>{t('title')}</h1>
 
       <main id="center">
-        <Container id="app-container">
+        <Container id="app-container" size="md" px={{ base: 'sm', md: 'xl' }}>
           <QRCodeGenerator />
         </Container>
       </main>

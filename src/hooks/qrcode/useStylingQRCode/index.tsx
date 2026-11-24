@@ -1,18 +1,15 @@
 import QRCodeStyling, { type Options } from 'qr-code-styling'
-import * as React from 'react'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export type QRCodeStylingOptions = {
-  target: React.RefObject<HTMLDivElement>
   width?: number
   height?: number
   data?: string
   backgroundColor?: string
-  onDownloadClick?: (extension: string) => void
 }
 
-export function useStylingQRCode({ width, height, data, backgroundColor, target }: QRCodeStylingOptions) {
-  const options = useMemo<Options>(() => ({
+function buildOptions({ width, height, data, backgroundColor }: QRCodeStylingOptions): Options {
+  return {
     width,
     height,
     data,
@@ -45,24 +42,27 @@ export function useStylingQRCode({ width, height, data, backgroundColor, target 
       color: '#222222',
       type: 'square',
     },
-  }), [backgroundColor, data, height, width])
+  }
+}
 
-  const [qrCode] = useState(() => new QRCodeStyling(options))
+export function useStylingQRCode({ width, height, data, backgroundColor }: QRCodeStylingOptions) {
+  const [qrCode] = useState(() => new QRCodeStyling(
+    buildOptions({ width, height, data, backgroundColor }),
+  ))
 
   useEffect(() => {
-    const container = target.current
-    if (!container) {
+    qrCode.update(buildOptions({ width, height, data, backgroundColor }))
+  }, [qrCode, width, height, data, backgroundColor])
+
+  const ref = useCallback((node: HTMLDivElement | null) => {
+    if (!node) {
       return
     }
-    qrCode.append(container)
+    qrCode.append(node)
     return () => {
-      container.replaceChildren()
+      node.replaceChildren()
     }
-  }, [qrCode, target])
+  }, [qrCode])
 
-  useEffect(() => {
-    qrCode.update(options)
-  }, [qrCode, options])
-
-  return qrCode
+  return { qrCode, ref }
 }
