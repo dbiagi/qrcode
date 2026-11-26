@@ -3,7 +3,7 @@
 A simple web app that generates QR codes from user input and lets you download them as images.
 
 <!-- Replace the path below with your screenshot -->
-![Screenshot](docs/screenshot.png)
+![Screenshot](docs/Screenshot_1.png)
 
 ## Features
 
