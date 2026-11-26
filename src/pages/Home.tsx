@@ -1,4 +1,4 @@
-import { Container } from '@mantine/core'
+import { Container, Paper } from '@mantine/core'
 import { useTranslation } from 'react-i18next'
 
 import { QRCodeGenerator } from '@/components/qrcode/QRCodeGenerator.tsx'
@@ -14,7 +14,9 @@ export function Home() {
 
       <main id="center">
         <Container id="app-container" size="md" px={{ base: 'sm', md: 'xl' }}>
-          <QRCodeGenerator />
+          <Paper shadow="md" radius="lg" withBorder p={{ base: 'md', sm: 'xl' }} mt="lg">
+            <QRCodeGenerator />
+          </Paper>
         </Container>
       </main>
     </>
