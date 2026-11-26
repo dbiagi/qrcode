@@ -2,6 +2,8 @@
 
 A simple web app that generates QR codes from user input and lets you download them as images.
 
+**[Live demo](https://dbiagi.github.io/qrcode/)**
+
 <!-- Replace the path below with your screenshot -->
 ![Screenshot](docs/Screenshot_1.png)
 

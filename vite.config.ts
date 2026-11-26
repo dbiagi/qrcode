@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url'
 // https://vite.dev/config/
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
+  // GitHub Pages serves the app from /qrcode/; Docker/nginx serves it from /
+  base: process.env.GITHUB_PAGES ? '/qrcode/' : '/',
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
   resolve: {
     alias: {
