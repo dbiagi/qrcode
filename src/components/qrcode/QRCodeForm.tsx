@@ -63,7 +63,7 @@ export function QRCodeForm({ type, onSubmit }: QRCodeInputProps) {
       case 'text':
         return <Textarea key={form.key('text')} {...form.getInputProps('text')} description={t('qrcode_form_textarea_description')} />
       case 'image':
-        return <TextInput key={form.key('image')} {...form.getInputProps('image')} description={t('qrcode_form_image_input_description')} />
+        return <TextInput key={form.key('image')} {...form.getInputProps('image')} description={t('qrcode_form_image_input_description')} placeholder={t('qrcode_form_image_input_wip')} disabled />
       case 'wifi':
         return <WifiInputs form={form} />
       case 'link':

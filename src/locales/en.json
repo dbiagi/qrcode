@@ -5,6 +5,7 @@
   "language.pt": "Português",
   "qrcode_form_textarea_description": "Enter the QR code text",
   "qrcode_form_image_input_description": "Enter the QR code image",
+  "qrcode_form_image_input_wip": "Work in progress",
   "qrcode_form_link_input_description": "Enter the QR code link",
   "qrcode_form_link_input_placeholder": "https://example.com",
   "qrcode_form_link_input_validation": "Please enter a valid URL",

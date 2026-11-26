@@ -10,7 +10,7 @@ export function Home() {
     <>
       <title>{t('title')}</title>
 
-      <h1>{t('title')}</h1>
+      <h1 className="center">{t('title')}</h1>
 
       <main id="center">
         <Container id="app-container" size="md" px={{ base: 'sm', md: 'xl' }}>
