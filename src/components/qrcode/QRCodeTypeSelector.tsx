@@ -1,7 +1,7 @@
 import { SegmentedControl } from '@mantine/core'
 import { ImageIcon, LinkIcon, TextboxIcon, WifiHighIcon } from '@phosphor-icons/react'
 
-import type { QRCodeInputType } from '@/components/qrcode/QRCodeForm.tsx'
+import type { QRCodeInputType } from '@/components/qrcode/index.ts'
 
 type QRCodeTypeSelectorProps = {
   onChange?: (value: QRCodeInputType) => void

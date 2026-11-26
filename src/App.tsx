@@ -12,9 +12,9 @@ const theme = createTheme({
   fontFamily: 'Segoe UI, Roboto, sans-serif',
   headings: {
     sizes: {
-      h1: { fontSize: 'clamp(1.75rem, 5vw + 1rem, 3rem)' },
+      h1: { fontSize: 'clamp(2rem, 5vw + 1rem, 3rem)' },
       h2: { fontSize: 'clamp(1.5rem, 5vw + 1rem, 2rem)' },
-      h3: { fontSize: 'clamp(1.5rem, 5vw + 1rem, 2rem)' },
+      h3: { fontSize: 'clamp(1.2rem, 5vw + 1rem, 1.5rem)' },
     },
   },
 })
